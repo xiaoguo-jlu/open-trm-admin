@@ -16,4 +16,13 @@ http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd http://www.s
         </jaxrs:providers>
     </jaxrs:server>
 
+    <jaxrs:server id="webAdmin" address="/admin">
+        <jaxrs:serviceBeans>
+            <ref bean="menuServiceImpl" />
+        </jaxrs:serviceBeans>
+        <jaxrs:providers>
+            <bean id="jsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider" />
+        </jaxrs:providers>
+    </jaxrs:server>
+
 </beans>
