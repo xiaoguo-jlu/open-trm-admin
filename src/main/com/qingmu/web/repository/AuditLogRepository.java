@@ -1,4 +1,4 @@
-package com.qingmu.web.domain.controller;
+package com.qingmu.web.repository;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @author qingmu
  * @since 2022-07-23
  */
-@RestController
-@RequestMapping("/auto/data-item-t")
-public class DataItemController {
+public class AuditLogRepository {
 
 }
 

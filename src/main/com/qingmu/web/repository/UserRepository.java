@@ -1,4 +1,4 @@
-package com.qingmu.web.domain.controller;
+package com.qingmu.web.repository;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/auto/user-t")
-public class UserController {
+public class UserRepository {
 
 }
 

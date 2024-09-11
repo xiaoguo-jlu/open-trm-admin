@@ -1,4 +1,4 @@
-package com.qingmu.web.domain.controller;
+package com.qingmu.web.repository;
 
 
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2022-07-23
  */
 @RestController
-@RequestMapping("/auto/role-permission-t")
-public class RolePermissionController {
+@RequestMapping("/auto/permission-t")
+public class PermissionRepository {
 
 }
 
