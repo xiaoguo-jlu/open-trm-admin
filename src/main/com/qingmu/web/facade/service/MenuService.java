@@ -5,7 +5,8 @@ import com.qingmu.web.infrastructure.framework.dao.po.Menu;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import javax.inject.Named;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
+import java.util.List;
 
 /**
  * <p>
@@ -16,7 +17,8 @@ import javax.ws.rs.Path;
  * @since 2022-07-23
  */
 @Path("/menu")
-@Named
+@Produces("application/json")
+@Consumes("application/json")
 public interface MenuService extends IRestService<Menu, Menu> {
 
 }

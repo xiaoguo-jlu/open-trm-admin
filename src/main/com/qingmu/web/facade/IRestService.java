@@ -1,5 +1,9 @@
 package com.qingmu.web.facade;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.QueryParam;
 import java.util.List;
 
 /**
@@ -10,12 +14,36 @@ import java.util.List;
  * @param <Q> 查询条件类型
  */
 public interface IRestService<D, Q> {
-    List<D> getAll(Q q);
-    ActionResponse<Integer> export(Q q);
-    ActionResponse<D> getSingle(D d);
-    ActionResponse<D> getById(Long id);
-    ActionResponse<D> insert(D d);
-    ActionResponse<D> update(Long id, D d);
-    ActionResponse<D> save(D d);
-    ActionResponse<Integer> delete(Long id);
+    @Path("/getAll")
+    @GET
+    List<D> getAll(@QueryParam("") Q q);
+
+    @Path("/export")
+    @POST
+    ActionResponse<Integer> export(@QueryParam("") Q q);
+
+    @Path("/getSingle")
+    @GET
+
+    ActionResponse<D> getSingle(@QueryParam("") D d);
+
+    @Path("/getById")
+    @GET
+    ActionResponse<D> getById(@QueryParam("") Long id);
+
+    @Path("/insert")
+    @GET
+    ActionResponse<D> insert(@QueryParam("") D d);
+
+    @Path("/update")
+    @GET
+    ActionResponse<D> update(Long id, @QueryParam("") D d);
+
+    @Path("/save")
+    @GET
+    ActionResponse<D> save(@QueryParam("") D d);
+
+    @Path("/delete")
+    @GET
+    ActionResponse<Integer> delete(@QueryParam("") Long id);
 }

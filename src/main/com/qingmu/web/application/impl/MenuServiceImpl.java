@@ -3,9 +3,6 @@ package com.qingmu.web.application.impl;
 import com.qingmu.web.application.AbstractRestService;
 import com.qingmu.web.facade.service.MenuService;
 import com.qingmu.web.infrastructure.framework.dao.po.Menu;
-import com.qingmu.web.infrastructure.framework.dao.MenuMapper;
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import org.springframework.stereotype.Service;
 
 import javax.inject.Named;
 
@@ -19,5 +16,4 @@ import javax.inject.Named;
  */
 @Named
 public class MenuServiceImpl extends AbstractRestService<Menu, Menu> implements MenuService {
-
 }
