@@ -1,7 +1,7 @@
 package com.qingmu.web.infrastructure.framework.dao.po;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.qingmu.web.infrastructure.DateConstants;
+import com.qingmu.web.infrastructure.Constants;
 
 import java.util.Date;
 
@@ -12,12 +12,12 @@ public abstract class BaseEntity {
 
     private String deleteFlag;
 
-    @JsonFormat(pattern = DateConstants.DEFAULT_TIME_PATTERN, timezone = DateConstants.DEFAULT_TIMEZONE)
+    @JsonFormat(pattern = Constants.DEFAULT_TIME_PATTERN, timezone = Constants.DEFAULT_TIMEZONE)
     private Date creationDate;
 
     private int createdBy;
 
-    @JsonFormat(pattern = DateConstants.DEFAULT_TIME_PATTERN, timezone = DateConstants.DEFAULT_TIMEZONE)
+    @JsonFormat(pattern = Constants.DEFAULT_TIME_PATTERN, timezone = Constants.DEFAULT_TIMEZONE)
     private Date lastUpdateDate;
 
     private int lastUpdatedBy;

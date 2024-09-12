@@ -1,10 +1,7 @@
 package com.qingmu.web.repository;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.qingmu.web.infrastructure.DateConstants;
 import com.qingmu.web.infrastructure.framework.dao.po.BaseEntity;
 
 import java.util.List;
