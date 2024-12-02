@@ -1,10 +1,11 @@
-import {createRouter, createMemoryHistory} from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 import HomePage from "@/components/HomePage";
 import HelloWorld from "@/components/HelloWorld";
 import CurrencyView from "@/view/Data/Currency";
+import CountryView from "@/view/Data/Country";
 
 const router = createRouter({
-    history: createMemoryHistory(),
+    history: createWebHistory(),
     routes: [
         {
             path: '/home',
@@ -15,8 +16,17 @@ const router = createRouter({
             component: HelloWorld
         },
         {
-            path: '/static-data/currency',
-            component: CurrencyView
+            path: '/static-data',
+            children: [
+                {
+                    path: "currency",
+                    component: CurrencyView
+                },
+                {
+                    path: "country",
+                    component: CountryView
+                },
+            ]
         }
     ]
 });
