@@ -50,6 +50,7 @@
                     </el-menu>
                 </el-aside>
                 <el-container>
+                    <el-header id="header"></el-header>
                     <el-main>
                         <router-view />
                     </el-main>
