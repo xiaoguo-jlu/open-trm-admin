@@ -31,7 +31,7 @@
                 <el-main>
                     <router-view />
                 </el-main>
-                <el-footer>Footer</el-footer>
+                <el-footer id="footer">Footer</el-footer>
             </el-container>
         </el-container>
     </div>
@@ -117,12 +117,11 @@
     #header {
         margin-top: 0;
         border-top-width: 0;
-        background-color: #67C23A;
+        background-color: #85A98F;
     }
 
     #footer {
-        background-color: #000000;
-        color: white;
+        background-color: #525B44;
         text-align: center;
         alignment: center;
     }
