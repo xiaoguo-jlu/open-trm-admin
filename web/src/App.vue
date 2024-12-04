@@ -8,32 +8,26 @@
                         class="el-menu-vertical-demo"
                         default-active="2"
                         text-color="#fff"
+                        :unique-opened="uniqueOpened"
                         @open="handleOpen"
                         @close="handleClose"
                 >
-                    <el-sub-menu index="1">
+                    <el-sub-menu v-for="(value, key, index) in menu" :key="index" :index="index">
                         <template #title>
                             <el-icon><icon-menu /></el-icon>
-                            <span>Data</span>
+                            <span>{{ key }}</span>
                         </template>
-                        <el-menu-item-group title="Static Data">
-                            <el-menu-item index="1-1" @click="chooseMenu('/static-data/currency')">
-                                Currency
+                        <el-menu-item-group title="value">
+                            <el-menu-item  v-for="(subValue) in value" :key = "subValue" @click="chooseMenu(subValue.path)">
+                                {{ subValue.name }}
                             </el-menu-item>
-                            <el-menu-item index="1-2">Country</el-menu-item>
                         </el-menu-item-group>
-                        <el-menu-item-group title="Group Two">
-                            <el-menu-item index="1-3">item three</el-menu-item>
-                        </el-menu-item-group>
-                        <el-sub-menu index="1-4">
-                            <template #title>item four</template>
-                            <el-menu-item index="1-4-1">item one</el-menu-item>
-                        </el-sub-menu>
                     </el-sub-menu>
                 </el-menu>
             </el-aside>
             <el-container>
-                <el-header id="header"></el-header>
+                <el-header id="header">
+                </el-header>
                 <el-main>
                     <router-view />
                 </el-main>
@@ -52,15 +46,21 @@
         components: {},
         data() {
             return {
+                isCollapse: false,
+                menuDisplayMode: 'horizontal',
+                uniqueOpened: true,
+                config: {
+                    uniqueOpened: true,
+                },
                 "menu": {
                     "Cash Management":[
-                        {"name": "ActualCashFlowView", "path": "/ac"},
+                        {"name": "ActualCashFlowView", "path": "/cash-management/ac"},
                     ],
                     "Deal": [
-                        {"name": "MoneyMarketView", "path": "/mm"},
+                        {"name": "MoneyMarketView", "path": "/deal/mm"},
                     ],
                     "Settlement": [
-                        {"name": "SettlementView", "path": "/settlement"},
+                        {"name": "SettlementView", "path": "/settlement/settlement"},
                     ],
                     "Report": [
                         {"name": "MoneyMarketView", "path": "/mm"},
@@ -72,8 +72,8 @@
                         {"name": "MoneyMarketView", "path": "/mm"},
                     ],
                     "Data": [
-                        {"name": "Currency", "path": "/currency"},
-                        {"name": "Country", "path": "/country"},
+                        {"name": "Currency", "path": "/static-data/currency"},
+                        {"name": "Country", "path": "/static-data/country"},
                     ],
                     "Config": [
                         {"name": "MoneyMarketView", "path": "/mm"},
@@ -90,6 +90,14 @@
             }
         },
         computed: {},
+        mounted(){
+            window.addEventListener('hashchange',()=>{
+                var currentPath = window.location.hash.slice(1); // 获取输入的路由
+                if(this.$router.path !== currentPath){
+                    this.$router.push(currentPath); // 动态跳转
+                }
+            },false);
+        },
     }
 </script>
 

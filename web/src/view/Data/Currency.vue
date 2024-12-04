@@ -1,6 +1,7 @@
 <template>
     <div id="app">
         <h1>Currency</h1>
+
     </div>
 </template>
 
