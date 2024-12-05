@@ -12,6 +12,15 @@
                         @open="handleOpen"
                         @close="handleClose"
                 >
+                    <el-sub-menu :key="0" :index="0">
+                        <template #title>
+                            <el-icon><icon-menu /></el-icon>
+                            <span @click="chooseMenu('/#')"> Home </span>
+                        </template>
+                            <el-menu-item :key = "0" @click="chooseMenu('#')">
+                                Home
+                            </el-menu-item>
+                    </el-sub-menu>
                     <el-sub-menu v-for="(value, key, index) in menu" :key="index" :index="index">
                         <template #title>
                             <el-icon><icon-menu /></el-icon>
@@ -27,6 +36,7 @@
             </el-aside>
             <el-container>
                 <el-header id="header">
+                    Welcome to Open-TRM!
                 </el-header>
                 <el-main>
                     <router-view />
