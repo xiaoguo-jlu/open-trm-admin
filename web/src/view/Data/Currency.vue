@@ -61,9 +61,9 @@
                 //       console.log(res);
                 //     });
                 getCurrencyList({})
-                    .then(function(response) {
-                        console.log(response.data);
-                        that.tableData = response.data;
+                    .then(function(data) {
+                        console.log(data);
+                        that.tableData = data;
                     });
             }
         },
