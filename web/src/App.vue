@@ -89,7 +89,7 @@
                         {"name": "MoneyMarketView", "path": "/mm"},
                     ],
                     "User": [
-                        {"name": "MoneyMarketView", "path": "/mm"},
+                        {"name": "UserManagementView", "path": "/user-management/user"},
                     ],
                 }
             }

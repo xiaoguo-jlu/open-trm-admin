@@ -25,9 +25,10 @@ http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd http://www.s
         </jaxrs:providers>
     </jaxrs:server>
 
-    <jaxrs:server id="webAdmin" address="/static-data">
+    <jaxrs:server id="staticData" address="/static-data">
         <jaxrs:serviceBeans>
             <ref bean="menuServiceImpl" />
+            <ref bean="currencyService" />
         </jaxrs:serviceBeans>
         <jaxrs:providers>
             <bean id="jsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider" />

@@ -13,7 +13,8 @@
         </el-form>
         <el-button type="primary" @click="query">Search</el-button>
         <el-button>Reset</el-button>
-        <el-table :data="tableData">
+        <el-divider />
+        <el-table :data="tableData" border>
             <el-table-column prop="currencyCode" label="Currency Code" />
             <el-table-column prop="currencyName" label="Currency Name" />
         </el-table>
@@ -21,6 +22,8 @@
 </template>
 
 <script>
+    import {getCurrencyList} from "../../api/api.staticdata";
+
     export default {
         name: "CurrencyView",
         data() {
@@ -50,8 +53,18 @@
             }
         },
         methods: {
-            query: {
-
+            query() {
+                let that = this;
+                // const req = new Axios();
+                // req.get("/open-trm/services/static-data/currency/getAll", {})
+                //     .then(function(res) {
+                //       console.log(res);
+                //     });
+                getCurrencyList({})
+                    .then(function(response) {
+                        console.log(response.data);
+                        that.tableData = response.data;
+                    });
             }
         },
     }
