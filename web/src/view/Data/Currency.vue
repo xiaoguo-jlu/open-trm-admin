@@ -1,6 +1,13 @@
 <template>
     <div id="app">
-        <h1>Currency</h1>
+        <el-breadcrumb separator="/">
+            <el-breadcrumb-item :to="{ path: '/' }">Home</el-breadcrumb-item>
+            <el-breadcrumb-item>
+                <a href="/">Static Data</a>
+            </el-breadcrumb-item>
+            <el-breadcrumb-item>Data</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{path: '/static-data/currency'}">Currency</el-breadcrumb-item>
+        </el-breadcrumb>
         <el-form :inline="true" :model="queryParam" class="demo-form-inline">
             <el-form-item label="Currency Code">
                 <el-input v-model="queryParam.currencyCode" placeholder="CNY" clearable/>
@@ -13,41 +20,67 @@
         </el-form>
         <el-button type="primary" @click="query">Search</el-button>
         <el-button>Reset</el-button>
-        <el-divider />
-        <el-table :data="tableData" border>
-            <el-table-column prop="currencyCode" label="Currency Code" />
-            <el-table-column prop="currencyName" label="Currency Name" />
-        </el-table>
+        <el-divider/>
+        <div id="operate-button-area">
+            <el-row>
+                <el-col :span="1">
+                    <el-button type="primary" @click="openNew">New</el-button>
+                </el-col>
+                <el-col :span="1">
+                    <el-button type="primary" @click="query">Delete</el-button>
+                </el-col>
+            </el-row>
+            <el-divider />
+        </div>
+        <div id="content-area">
+            <el-table :data="tableData" border>
+                <el-table-column prop="currencyCode" label="Currency Code"/>
+                <el-table-column prop="currencyName" label="Currency Name"/>
+            </el-table>
+        </div>
+        <div id="page-area">
+            <el-pagination hide-on-single-page background layout="prev, pager, next, sizes, jumper, total"
+                           :total="pageParam.total" :page-sizes="pageParam.allowPageSize" :size="pageParam.pageSize"
+                           @current-change="handleCurrentChange" @size-change="handleSizeChange"></el-pagination>
+        </div>
     </div>
 </template>
 
 <script>
     import {getCurrencyList} from "../../api/api.staticdata";
+    import router from "../../router";
 
     export default {
         name: "CurrencyView",
         data() {
             return {
+                "pageParam" : {
+                    "total": 190,//总条数
+                    "pageSize":10,//指定展示多少条
+                    "currentPage":1,//当前页码
+                    "currentSize": 10,
+                    "allowPageSize": [10, 20, 50, 100, 200, 500],
+                },
                 "queryParam": {
                     currencyCode: "",
-                    currencyName:"",
+                    currencyName: "",
                 },
                 "tableData": [
                     {
                         currencyCode: "CNY",
-                        currencyName:"Chinese Yuan",
+                        currencyName: "Chinese Yuan",
                     },
                     {
                         currencyCode: "CNY",
-                        currencyName:"Chinese Yuan",
+                        currencyName: "Chinese Yuan",
                     },
                     {
                         currencyCode: "CNY",
-                        currencyName:"Chinese Yuan",
+                        currencyName: "Chinese Yuan",
                     },
                     {
                         currencyCode: "CNY",
-                        currencyName:"Chinese Yuan",
+                        currencyName: "Chinese Yuan",
                     },
                 ],
             }
@@ -61,15 +94,28 @@
                 //       console.log(res);
                 //     });
                 getCurrencyList({})
-                    .then(function(data) {
+                    .then(function (data) {
                         console.log(data);
                         that.tableData = data;
                     });
-            }
+            },
+            openNew() {
+                router.push("/static-data/currencyDetails");
+            },
+            handleCurrentChange(currentPage){
+                console.log(currentPage);
+                this.currentPage = currentPage;
+            },
+            handleSizeChange(currentSize){
+                console.log(currentSize);
+                this.currentSize = currentSize;
+            },
         },
     }
 </script>
 
 <style scoped>
-
+    .operate-button {
+        alignment: left;
+    }
 </style>

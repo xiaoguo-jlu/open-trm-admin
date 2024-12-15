@@ -7,6 +7,7 @@ import ActualCashFlowView from "@/view/CashManagement/ActualCashFlow";
 import MoneyMarketView from "@/view/Deal/MoneyMarketDeal";
 import SettlementView from "@/view/Settlement/Settlement";
 import UserManagementView from "@/view/User/UserManagement";
+import CurrencyDetails from "@/view/Data/CurrencyDetails";
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -29,6 +30,10 @@ const router = createRouter({
                 {
                     path: "currency",
                     component: CurrencyView
+                },
+                {
+                    path: "currencyDetails",
+                    component: CurrencyDetails
                 },
                 {
                     path: "country",
