@@ -3,6 +3,7 @@ package com.qingmu.web.infrastructure.framework.dao.po;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
 
 /**
  * <p>
@@ -13,10 +14,9 @@ import com.baomidou.mybatisplus.annotation.TableId;
  * @since 2022-07-23
  */
 @TableName("qm_data_classify_t")
+@Data
 public class DataClassify extends BaseEntity {
-
     private static final long serialVersionUID=1L;
-
     @TableId(value = "classify_id", type = IdType.AUTO)
     private Long classifyId;
 

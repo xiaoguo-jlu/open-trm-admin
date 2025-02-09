@@ -12,6 +12,8 @@ import java.util.List;
 
 @Named
 public class CurrencyService extends AbstractRestService<Currency, Currency> implements ICurrencyService {
+
+
     @Override
     public List<Currency> getAll(Currency currency) {
         List<Currency> result = new LinkedList<>();

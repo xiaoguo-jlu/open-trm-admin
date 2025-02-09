@@ -35,12 +35,13 @@
                     </el-form>
                 </el-main>
                 <el-footer>
-                    <el-button type="primary">Save</el-button>
-                    <el-button type="primary">Delete</el-button>
+                    <div id="operateButtonGroup">
+                        <el-button type="primary" @click="saveData">Save</el-button>
+                        <el-button type="primary" @click="deleteData">Delete</el-button>
+                    </div>
                 </el-footer>
             </el-container>
         </div>
-        <div id="operateButtonGroup"></div>
     </div>
 </template>
 
@@ -49,11 +50,28 @@
         name: "CurrencyDetails",
         data() {
             return {
-                currencyDetails: {},
+                currencyDetails: {
+                    currencyId: "",
+                    currencyCode: "",
+                    currencyName: "",
+                    description: "",
+                    roundType: "",
+                    amountPrecision: "",
+                    ratePrecision: ""
+                },
                 roundTypeList: [
-                    {label: "4/5", value: ""},
-
+                    {label: "4/5", value: "ROUND_HALF"},
+                    {label: "UP", value: "ROUND_UP"},
+                    {label: "DOWN", value: "ROUND_DOWN"}
                 ],
+
+            }
+        },
+        methods: {
+            saveData() {
+
+            },
+            deleteData() {
 
             }
         }
