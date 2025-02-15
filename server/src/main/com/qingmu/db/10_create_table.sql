@@ -1,4 +1,4 @@
-use qm_admin_db;
+use trm_db;
 
 -- 用户表
 drop table if exists qm_user_t;

@@ -11,6 +11,7 @@
                         :unique-opened="uniqueOpened"
                         @open="handleOpen"
                         @close="handleClose"
+                        :collapse="isCollapse"
                 >
                     <el-sub-menu :key="0" :index="0">
                         <template #title>

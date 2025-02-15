@@ -15,6 +15,9 @@
             <el-form-item label="Currency Name">
                 <el-input v-model="queryParam.currencyName" clearable/>
             </el-form-item>
+            <el-form-item label="Status">
+                <el-input v-model="queryParam.status" clearable/>
+            </el-form-item>
             <el-form-item>
             </el-form-item>
         </el-form>
@@ -36,6 +39,12 @@
             <el-table :data="tableData" border>
                 <el-table-column prop="currencyCode" label="Currency Code"/>
                 <el-table-column prop="currencyName" label="Currency Name"/>
+                <el-table-column prop="description" label="Description"/>
+                <el-table-column prop="amountPrecision" label="Amount Precision"/>
+                <el-table-column prop="ratePrecision" label="Rate Precision"/>
+                <el-table-column prop="roundingMethod" label="Rounding Method"/>
+                <el-table-column prop="holiday" label="Holiday"/>
+
             </el-table>
         </div>
         <div id="page-area">
@@ -47,7 +56,7 @@
 </template>
 
 <script>
-    import {getCurrencyList} from "../../api/api.staticdata";
+    import {getPagedResult} from "../../api/api.staticdata";
     import router from "../../router";
 
     export default {
@@ -55,7 +64,7 @@
         data() {
             return {
                 "pageParam" : {
-                    "total": 190,//总条数
+                    "total": 100,//总条数
                     "pageSize":10,//指定展示多少条
                     "currentPage":1,//当前页码
                     "currentSize": 10,
@@ -64,24 +73,9 @@
                 "queryParam": {
                     currencyCode: "",
                     currencyName: "",
+                    stauts: "",
                 },
                 "tableData": [
-                    {
-                        currencyCode: "CNY",
-                        currencyName: "Chinese Yuan",
-                    },
-                    {
-                        currencyCode: "CNY",
-                        currencyName: "Chinese Yuan",
-                    },
-                    {
-                        currencyCode: "CNY",
-                        currencyName: "Chinese Yuan",
-                    },
-                    {
-                        currencyCode: "CNY",
-                        currencyName: "Chinese Yuan",
-                    },
                 ],
             }
         },
@@ -89,14 +83,17 @@
             query() {
                 let that = this;
                 // const req = new Axios();
-                // req.get("/open-trm/services/static-data/currency/getAll", {})
+                // req.get("/finance/trm/services/staticdata/currency/findAll", {})
                 //     .then(function(res) {
                 //       console.log(res);
                 //     });
-                getCurrencyList({})
+                getPagedResult(this.queryParam, this.pageParam)
                     .then(function (data) {
                         console.log(data);
-                        that.tableData = data;
+                        that.tableData = data.data;
+                        that.pageParam.currentPage = data.pageInfo.currentPage;
+                        that.pageParam.pageSize = data.pageInfo.pageSize;
+                        that.pageParam.total = data.pageInfo.total;
                     });
             },
             openNew() {

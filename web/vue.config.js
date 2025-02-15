@@ -4,10 +4,14 @@ module.exports = defineConfig({
   publicPath: '/',
   devServer: {
     proxy: {
-      '/open-trm/services': {
+      '/finance/trm/services': {
         target: "http://127.0.0.1:8003",
         changeOrigin: true,
-      }
+      },
+      '/services': {
+        target: "http://127.0.0.1:8003",
+        changeOrigin: true,
+      },
     }
   }
 })

@@ -1,4 +1,4 @@
-use qm_admin_db;
+use trm_db;
 
 -- 货币表
 drop table if exists trm_currency_t;
@@ -11,6 +11,7 @@ CREATE TABLE trm_currency_t (
     rate_precision INT,                                       -- 汇率精度
     rounding_method VARCHAR(20),                              -- 圆整方式
     currency_holidays VARCHAR(255),                           -- 货币节假日，记录周几是节假日
+    day_count_convention VARCHAR(20) DEFAULT 'Actual/Actual',  -- 年天数基准
     delete_flag CHAR(1) DEFAULT 'N',                          -- 删除标记，默认 'N'
     creation_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP, -- 创建时间，默认当前时间
     created_by BIGINT NOT NULL DEFAULT -1,                     -- 创建者ID，默认 -1
